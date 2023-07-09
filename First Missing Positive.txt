@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& arr) {
+       bool one = false;
+       int n = arr.size();
+
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i] == 1)one=true;
+            if(arr[i]<1 || n < arr[i])
+            {
+                arr[i]=1;
+               
+
+            }
+
+
+
+        }
+        if(one == false )return 1;
+
+        for(int i=0;i<n;i++)
+        {
+           int  ind = abs(arr[i]);
+           arr[ind-1]=-abs(arr[ind-1]);
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]>0)return i+1;
+        }
+        return n+1;
+    }
+};
