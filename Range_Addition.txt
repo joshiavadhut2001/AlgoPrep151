@@ -1,0 +1,16 @@
+vector<int> getModifiedArray(int length, vector<vector<int>> &updates) {
+        // Write your code here
+        vector<int>ans(length,0);
+        for(auto w: updates)
+        {
+            int x= w[0];
+            int y=w[1];
+            int z=w[2];
+            for(int i=x;i<=y;i++)
+            {
+                ans[i]+=z;
+            }
+            
+        }
+        return ans;
+    }
