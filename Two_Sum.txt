@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        
+        vector<pair<int,int>>ans;
+        vector<int>v;
+        pair<int,int>p;
+        int n = nums.size();
+        for(int i=0;i<n;i++)
+        {
+            ans.push_back({nums[i],i});
+        }
+        sort(ans.begin(),ans.end());
+        
+        auto it = ans.begin(), it2 = ans.end();
+        it2 --;
+        while(it < it2){
+            int sum = it->first + it2->first;
+            if(sum == target){
+                v.push_back(it->second);
+                v.push_back(it2->second);
+                return v;
+            }
+            else if(sum < target)
+                it ++;
+            else 
+                it2 --;
+        }
+        return v;
+    }
+};
