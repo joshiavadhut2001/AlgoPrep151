@@ -1,0 +1,40 @@
+class Solution {
+public:
+   void solve(int ind,string &digits,unordered_map<char,string>&m,vector<string>&ans,string &curr){
+
+        //base case
+        if(ind == digits.size())
+        {
+            ans.push_back(curr);
+            return;
+        }
+        for(auto x: m[digits[ind]])
+        {
+            curr+=x;
+            solve(ind+1,digits,m,ans,curr);
+            curr.pop_back();
+        }
+
+    }
+    vector<string> letterCombinations(string digits) {
+        
+        unordered_map<char,string>m;
+        string curr="";
+        for(auto x: digits)
+        {
+            if(x =='2')m['2']="abc";
+             if(x =='3')m['3']="def";
+              if(x =='4')m['4']="ghi";
+               if(x =='5')m['5']="jkl";
+            if(x =='6')m['6']="mno";
+            if(x =='7')m['7']="pqrs";
+             if(x =='8')m['8']="tuv";
+              if(x =='9')m['9']="wxyz";
+        }
+        
+        vector<string>ans;
+        if(digits == "")return ans;
+        solve(0,digits,m,ans,curr);
+        return ans;
+    }
+};
